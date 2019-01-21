@@ -1,0 +1,117 @@
+/*--semantics reset and basics--*/
+
+* {
+  font-family: 'Lato';
+}
+
+input[type=submit] {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: 6px;
+  font-size: 1em;
+  background-color: #bb1100;
+  color: #fff;
+  border: none;
+}
+
+
+p {
+}
+
+h1, h2, h3, h4{
+
+}
+
+a {
+  color: #bb1100;
+}
+
+
+/*--Header--*/
+
+/*--Menu--*/
+
+/*--Page standards--*/
+/*slider---*/
+/*--Page: Work--*/
+
+/*--Single: Work--*/
+/*--Page: About--*/
+/*--Page: Contact--*/
+
+/*form*/
+
+/**/
+
+/*--Footer--*/
+
+/*=====================================640PX========================================*/
+
+@media (min-width: 640px) {
+
+/*--Header--*/
+
+/*--Menu--*/
+
+/*--Page standards--*/
+/*slider---*/
+/*--Page: Work--*/
+
+/*--Single: Work--*/
+/*--Page: About--*/
+/*--Page: Contact--*/
+
+/*form*/
+
+/**/
+
+/*--Footer--*/
+
+
+
+}
+
+/*=====================================960PX========================================*/
+
+@media (min-width: 960px) {
+
+/*--Header--*/
+
+/*--Menu--*/
+
+/*--Page standards--*/
+/*slider---*/
+/*--Page: Work--*/
+
+/*--Single: Work--*/
+/*--Page: About--*/
+/*--Page: Contact--*/
+
+/*form*/
+
+/**/
+
+/*--Footer--*/
+
+
+}
+
+/*=====================================1200PX========================================*/
+
+@media (min-width: 1200px) {
+
+/*--Header--*/
+
+/*--Menu--*/
+
+/*--Page: Work--*/
+
+/*--Single: Work--*/
+
+/*--Page: About--*/
+
+/*--Page: Contact--*/
+
+/*--Footer--*/
+
+}
