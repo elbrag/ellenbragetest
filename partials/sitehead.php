@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <?php wp_nav_menu( array('menu' => 'Menu', 'container' => '', 'link_before' => '<span class="radiobutton"></span>', 'after' => '', 'items_wrap' => '<ul class="main-ul">%3$s</ul>' )); ?>
+        <?php wp_nav_menu( array('menu' => 'Menu', 'container' => '', 'link_before' => '', 'after' => '', 'items_wrap' => '<ul class="main-ul">%3$s</ul>' )); ?>
 
 
       </div>

@@ -1,7 +1,9 @@
 /*--semantics reset and basics--*/
 
 * {
-  font-family: 'Raleway', 'Trebuchet MS', sans-serif;
+  font-family: 'ff-tisa-sans-web-pro', 'Trebuchet MS', sans-serif;
+
+
 }
 
 p, a {
@@ -10,7 +12,9 @@ p, a {
 
 
 h1, h2, h3, h4{
-
+  font-family: 'ff-tisa-web-pro', 'Trebuchet MS', sans-serif;
+
+
 }
 
 body {
@@ -30,7 +34,7 @@ body {
       #fffa72
     );  */
 
-    background-color: #fff951;
+    background-color: #f7e4ad;
 }
 
 #loading {
@@ -57,11 +61,11 @@ a {
 /*--Menu--*/
 
 .main-nav {
-  background-color: #fff951;
+  background-color: #f7e4ad;
 }
 
 .main-menu {
-  background-color: #fff951;
+  background-color: #f7e4ad;
 }
 
 .menu-item {
@@ -70,10 +74,11 @@ a {
 
 .menu-item a {
   padding-left: 26px;
-  font-family: 'Raleway';
+  font-family: 'metalista-web';
   text-decoration: none;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: 800;
+  text-transform: lowercase;
 }
 
 .radiobutton {
@@ -116,32 +121,26 @@ a {
 
 /*frontpage--*/
 
-#frontpage {
-  position: relative;
-}
-
 #front_background {
   background-color: transparent;
   height: 58vh;
   display: flex;
+  flex-direction: column;
 }
 
-.fill {
-  color: #fff951;
+.name {
+  color: #f7e4ad;
   /* -webkit-text-stroke: 2px #000; */
   opacity: 0.4;
   text-shadow: 2px 2px 0.7vw rgba(0,0,0,0.6);
-  font-family: 'Passion One';
+  font-family: 'metalista-web';
   text-transform: uppercase;
-  font-size: 32.7vw;
-  line-height: 0.7em;
-  margin-bottom: 0;
-  margin-left: -4px;
-  position: absolute;
-  bottom:20px;
-  left: 0;
-  display: inline;
-  width: 82%;
+  line-height: 0.8em;
+  display: inline;
+  align-self: center;
+  text-align: center;
+  margin: 0;
+  padding-top: 10px;
 }
 
 .titles_box{
@@ -165,7 +164,8 @@ a {
   margin: 0 auto;
   width: 100%;
   height: 67%;
-  align-self: flex-start;
+  position: absolute;
+  z-index: 1;
 }
 #preload {
   background: url(../img/clicked.png) no-repeat -9999px -9999px;
@@ -295,7 +295,7 @@ div.wpcf7-mail-sent-ok {
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #fff951 inset;
+    -webkit-box-shadow: 0 0 0 30px #f7e4ad inset;
 }
 
 .wpcf7 input[type=text], .wpcf7 input[type=email] {
@@ -307,7 +307,7 @@ input:-webkit-autofill {
 /*--Footer--*/
 
 .mainfooter {
-  background-color: #fff951;
+  background-color: #f7e4ad;
   padding: 7px 0;
 }
 
@@ -337,7 +337,7 @@ input:-webkit-autofill {
 .main-menu {
   background-color: transparent;
   width: calc(100% - 165px);
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .radiobutton {
@@ -364,10 +364,6 @@ input:-webkit-autofill {
   background-color: transparent;
   margin-top: 0;
   height: 67vh;
-}
-
-.fill{
-  bottom: 20px;
 }
 
 
@@ -487,7 +483,7 @@ input:-webkit-autofill {
 
 @media (min-width: 1100px) {
 
-  .fill{
+  .name{
     font-size: 360px;
   }
 
@@ -551,7 +547,7 @@ input:-webkit-autofill {
 
 
 
-.fill {
+.name {
   font-size: 400px;
 }
 
@@ -582,7 +578,7 @@ input:-webkit-autofill {
     max-width: 1380px;
   }
 
-  .fill {
+  .name {
     font-size: 500px;
   }
 
@@ -592,7 +588,7 @@ input:-webkit-autofill {
 
 @media (min-width: 2000px) {
 
-.fill {
+.name {
   font-size: 540px;
 }
 
