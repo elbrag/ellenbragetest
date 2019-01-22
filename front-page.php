@@ -13,14 +13,14 @@ document.querySelector('body').className = 'body_home';
 if ($_COOKIE['theme'] == '') {
   ?>
   <script>
-  console.log('hi');
-  $(document).click(function(){
-      $('.graphic_elem').addClass('clicked');
-
-      setTimeout(function(){
-        $('.graphic_elem').removeClass('clicked');
-      }, 200);
-  });
+  // console.log('hi');
+  // $(document).click(function(){
+  //     $('.graphic_elem').addClass('clicked');
+  //
+  //     setTimeout(function(){
+  //       $('.graphic_elem').removeClass('clicked');
+  //     }, 200);
+  // });
   </script>
 <?php }
  ?>
@@ -44,21 +44,14 @@ if( have_posts() ) {
      ?>
 
   <section id='frontpage'>
-
         <div id='front_background'>
-
           <div class='graphic_elem'></div>
-
-
-                            <h1 class='name'>Ellen Brage</h1>
-
-
+              <h1 class='name'>Ellen Brage</h1>
           </div>
-
-
-
-
   </section>
+  <section id='belowfold'>
+
+  </section>
   <?php
     }
   }

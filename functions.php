@@ -46,18 +46,18 @@ wp_register_style( $handle, $src, $deps, $ver, $media );
 
 
 //extra style sheet:
-$handle2 = "theme";
-
-if(isset($_COOKIE['theme'])) {
-  $theme = ($_COOKIE['theme']);
-} else {
-  $theme ='standard';
-}
-$src2 = get_template_directory_uri() . "/css/".$theme.".css";
-$deps2 = null;
-$ver2 = null;
-$media2 = "all";
-wp_register_style( $handle2, $src2, $deps2, $ver2, $media2 );
+// $handle2 = "theme";
+//
+// if(isset($_COOKIE['theme'])) {
+//   $theme = ($_COOKIE['theme']);
+// } else {
+//   $theme ='standard';
+// }
+// $src2 = get_template_directory_uri() . "/css/".$theme.".css";
+// $deps2 = null;
+// $ver2 = null;
+// $media2 = "all";
+// wp_register_style( $handle2, $src2, $deps2, $ver2, $media2 );
 
 //load both of the style sheets
 function mytheme_enqueue_style() {

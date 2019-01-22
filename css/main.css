@@ -5,7 +5,6 @@
 
 body {
   margin: 0;
-  background-color: #f7e4ad;
 }
 
 main {
@@ -197,7 +196,9 @@ p a:active {
 /*--Header--*/
 
 header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: 2;
 }
 
 #logocontainer {
@@ -302,7 +303,8 @@ header {
 .menu-item a {
   padding-left: 26px;
   font-size: 32px;
-  color: #f7e4ad;
+  color: #f7f144;
+  letter-spacing: 1px;
   font-family: 'metalista-web';
   text-decoration: none;
   font-weight: 800;
@@ -399,20 +401,18 @@ input[type=submit] {
   transform: scale(0.96);
 }
 
-/*--Frontpage--*/
-
-
 /*frontpage--*/
 
 
 #frontpage {
-  background-image: url(../img/name_1.svg);
+  background-image: url(../img/name2_wave2_white.svg);
+  /* background-image: url(../img/name2_wave_white.svg); */
   background-repeat: no-repeat;
-  background-size: 105%;
-  background-position: 10%;
+  background-size: 75%;
+  background-position: 60%;
   background-color: #000;
-  margin-top: -82px;
   overflow: visible;
+  margin-bottom: 0;
 }
 
 #front_background {
@@ -421,9 +421,15 @@ input[type=submit] {
   height: 80vh;
   position: relative;
 }
+
+#belowfold {
+  background-color: #fff;
+  height: 75vh;
+  margin-bottom: 0;
+}
 .name {
   display: none;
-  color: #f7e4ad;
+  color: #f7f144;
   /* -webkit-text-stroke: 2px #000; */
   opacity: 0.4;
   text-shadow: 2px 2px 0.7vw rgba(0,0,0,0.6);
@@ -445,6 +451,7 @@ input[type=submit] {
   width: 100%;
   height: 67%;
   position: absolute;
+  bottom: -60%;
   z-index: 1;
 }
 
@@ -828,7 +835,7 @@ input[type=submit] {
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #f7e4ad inset;
+    -webkit-box-shadow: 0 0 0 30px #f7f144 inset;
 }
 
 div.wpcf7-mail-sent-ok {
@@ -871,9 +878,6 @@ background-color: transparent!important;
   bottom: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #f7e4ad;
-  padding: 7px 0;
-
 }
 
 /*=====================================640PX========================================*/
@@ -978,7 +982,7 @@ background-color: transparent!important;
   }
 
   .graphic_elem {
-    width: 90%;
+    width: 60%;
     height: 92%;
   }
 
@@ -1123,7 +1127,6 @@ background-color: transparent!important;
   /*--Footer--*/
 
   .mainfooter {
-    padding: 8px 0;
   }
 
   #slider_area {
@@ -1482,10 +1485,6 @@ background-color: transparent!important;
     max-width: 1500px;
   }
 
-  .graphic_elem {
-    max-width: 1000px;
-    /* height: 40vh; */
-  }
 
   .graphic_elem2{
     background-size: 50%;

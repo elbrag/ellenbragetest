@@ -11,7 +11,18 @@ jQuery(window).on('load', function() {
 
 });
 ////////////////////////////////////////////////////
-
+
+$(document).click(function(){
+
+    $('.graphic_elem').addClass('clicked');
+    setTimeout(function(){
+      $('.graphic_elem').removeClass('clicked');
+    }, 200);
+
+});
+
+
+
 //go to top-button///////////////////////////////////////////////https://getflywheel.com/layout/add-sticky-back-top-button-website/
 var topButton = $("#topButton");
 
