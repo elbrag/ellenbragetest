@@ -53,29 +53,13 @@ return false;
 /////////////////////////////////////////////////////////////////////////
 
 
-//if window width is changed, adjust the menu
  $(document).ready(function(){
 
-   var menu = document.querySelector('.main-menu');
 
       function windowSize() {
         windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
         return windowWidth;
       }
-
-      $(window).resize(function() {
-
-            windowSize();
-
-            if (windowSize() >= 640) {
-              menu.style.display = 'block';
-              document.querySelector('body').style.overflow = 'auto';
-            } else {
-              menu.style.display = 'none';
-            }
-
-      });
-
 
       var texttag = document.querySelector('.single_description');
       var textToLimit = texttag.innerHTML;
@@ -135,31 +119,42 @@ return false;
 
         });
 
-
-
-
-
-
 //hamburger menu
 
 var menuicon = document.getElementById('menu-symb');
 
 function openMenu(x){
 
-  // x.style.top + '1px';
-  // x.style.top -= '1px';
-
   x.classList.toggle("change");
-
-  var menu = document.querySelector('.main-menu');
-
-  if (menu.style.display == "block") {
-    menu.style.display = "none";
-    document.querySelector('body').style.overflow = 'auto';
-  } else  {
-    menu.style.display = "block";
-    document.querySelector('body').style.overflow = 'hidden';
-  }
+
+
+  var menu = $('.main-menu');
+
+  // $('.main-menu').toggleClass('open');
+
+  var transEnd = "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd";
+
+  if (menu.hasClass('open')){
+    $('.main-ul').removeClass('show');
+    menu.addClass('closed');
+    $('header').addClass('closing');
+
+    menu.one(transEnd, function() {
+        menu.removeClass('open');
+  			menu.removeClass('closed');
+        $('header').removeClass('open closing');
+  			menu.off(transEnd);
+  		});
+
+  } else {
+    menu.removeClass('closed');
+    menu.addClass('open');
+    $('header').addClass('open');
+
+    menu.one(transEnd, function() {
+      $('.main-ul').addClass('show');
+    });
+  }
 
 };
 
@@ -214,79 +209,3 @@ function slideprev(){
   }
 }
 
-//gallery////////////////////////////////////////
-
-/*sorting the images into place (see function below for function call)
-https://stackoverflow.com/questions/9778899/how-to-order-divs-by-id-in-javascript*/
-// function sortdivs(){
-//   var mylist = document.querySelector('.single_thumbs');
-//   var divs = mylist.getElementsByTagName('div');
-//   var listitems = [];
-//   for (i = 0; i < divs.length; i++) {
-//     listitems.push(divs.item(i));
-//   }
-//   listitems.sort(function(a,b) {
-//     var compA = a.getAttribute('id').toUpperCase();
-//     var compB = b.getAttribute('id').toUpperCase();
-//     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-//   })
-//   for (i = 0; i < listitems.length; i++) {
-//     mylist.appendChild(listitems[i]);
-//   }
-// }
-//
-// //work:single: gallery function
-// var bigimage = document.querySelector('.single_image');
-// bigimage.classList.remove('single_image');
-// bigimage.className = 'single_big';
-//
-// var $bigimage = $('.single_big');
-//
-// $bigimage.parent().before($bigimage);
-// //this is only to move bigimage into a class, so that the prev/next controls can be absolutely positioned to it
-// $($bigimage).prependTo(".image_area");
-//
-//
-// function enlarge(x){
-//   var ensmall = document.querySelector('.single_big');
-//   ensmall.classList.remove('single_big');
-//   ensmall.className = 'single_image';
-//
-//   $(ensmall).prependTo(".single_thumbs");
-//
-//   var smallimage = document.getElementById(x);
-//
-//   smallimage.className = 'single_big';
-//   var $bigimage = $('.single_big');
-//
-//   $bigimage.parent().before($bigimage);
-//   //this is only to move bigimage into a class, so that the prev/next controls can be absolutely positioned to it
-//   $($bigimage).prependTo(".image_area");
-//
-//   sortdivs();
-// }
-//
-// function nextimage() {
-//   var children = document.querySelector(".single_thumbs").children.length + 1;
-//   var current = parseInt(document.querySelector('.single_big').id);
-//   var nextid = (current+1);
-//
-//   if (nextid > children) {
-//     nextid = 1;
-//   }
-//
-//   enlarge(nextid);
-// }
-//
-// function previmage() {
-//
-//   var children = document.querySelector(".single_thumbs").children.length + 1;
-//   var current = parseInt(document.querySelector('.single_big').id);
-//   var previd = (current-1);
-//
-//   if (previd == 0) {
-//     previd = children;
-//   }
-//
-//   enlarge(previd);
-// }

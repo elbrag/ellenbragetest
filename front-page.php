@@ -5,7 +5,7 @@
 
 get_header(); ?>
 <script>
-document.querySelector('body').className = 'body_home';
+document.querySelector('header').className = 'home';
 
 </script>
 

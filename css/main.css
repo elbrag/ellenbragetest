@@ -1,4 +1,7 @@
 /*--semantics reset and basics--*/
+:root {
+  font-size: 62.5%;
+}
 * {
   font-family: 'ff-tisa-sans-web-pro', 'Trebuchet MS', sans-serif;
 }
@@ -196,10 +199,20 @@ p a:active {
 /*--Header--*/
 
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 2;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 0.3s ease-in-out;
 }
+
+header.open {
+  background-color: rgba(0,0,0,1);
+}
+header.closing {
+  background-color: rgba(0,0,0,0);
+}
 
 #logocontainer {
   width: 20%;
@@ -216,7 +229,7 @@ header {
 #logo {
   width: inherit;
   height: inherit;
-  background-image: url(../img/eb_logo_white.svg);
+  background-image: url(../img/eb_logo_black.svg);
   background-repeat: no-repeat;
   background-size: 100%;
   display: block;
@@ -224,7 +237,13 @@ header {
 }
 
 /*--Menu--*/
-
+
+header.home #menu-symb {
+    background-image: url(../img/hamb_white_1.svg);
+}
+header.home #logo {
+    background-image: url(../img/eb_logo_white.svg);
+}
 #menu-symb {
   color: #000;
   position: absolute;
@@ -245,76 +264,84 @@ header {
 }
 
 .main-menu {
-  display: none;
-  position: absolute;
-  margin-top: 64px;
-  background-color: #FFF;
+  position: fixed;
+  top: 82px;
+  background-color: #000;
   width: 100%;
-  height: 100vh;
-  padding: 0 0 48px 0;
+  height: calc(100vh - 82px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
   box-sizing: border-box;
   z-index: 1200;
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
+.main-menu.open {
+  max-height: 100vh;
+  visibility: visible;
+  opacity: 1;
+  padding: 0 0 16vh 0;
+}
+.main-menu.closed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+}
 
 .main-ul {
-  margin-top: 48px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
+.main-ul.show {
+  opacity: 1;
+}
 
 .menu-item {
   padding: 12px 0;
-  text-align: left;
-  width: 100px;
+  text-align: center;
   margin: 0 auto;
   position: relative;
   margin-bottom: 6px;
 }
-
-.radiobutton {
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: 0;
-  top: 17px;
-  color: #000;
-  border: 2px solid #000;
-  border-radius: 50%;
-}
-
-.menu-item.active .radiobutton {
-  background-color: #000;
-}
-
-.radiobutton:after {
-  content: "";
-  position: absolute;
-  display: none;
-  top: 3px;
-  left: 3px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: white;
-}
-
-.menu-item.active .radiobutton:after {
-  display: block;
-}
-
-.menu-item a {
-  padding-left: 26px;
-  font-size: 32px;
-  color: #f7f144;
-  letter-spacing: 1px;
-  font-family: 'metalista-web';
-  text-decoration: none;
-  font-weight: 800;
-  text-transform: lowercase;
-}
 
-
-.lang_items {
-  overflow: hidden;
+.menu-item a {
+  font-size: 4rem;
+  line-height: 1.2;
+  color: #f7f144;
+  letter-spacing: 2px;
+  /* font-family:   'Source Serif Pro'; */
+  font-family: 'ivyjournal';
+  /* font-family:   'ff-tisa-web-pro'; */
+  /* font-family: 'metalista-web'; */
+  text-decoration: none;
+  font-weight: 300;
+  text-transform: lowercase;
+  font-variant: small-caps;
 }
+.menu-item a:active {
+  color: red;
+}
+.menu-item a::selection,
+.lang_items a::selection,
+.lang_items>*::selection,
+.lang_item::selection {
+  background: transparent;
+}
+
+.lang_items {
+  text-align: center;
+}
+
+.switch_container {
+  width: auto;
+  display: inline;
+  text-align: center;
+}
+
 .lang_items a {
   text-decoration: none;
   color: #fff;
@@ -325,18 +352,16 @@ header {
   display: inline;
   padding: 12px 6px;
   background-color: transparent;
+  color: #fff;
   border-radius: 0;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 2rem;
   font-weight: 300;
 }
-
-.switch_container {
-  width: 100px;
-  text-align: center;
-  float: right;
-}
-
+.lang_items a:nth-child(1)::after {
+  content: '|';
+  font-size: 2rem;
+}
 .lang_items a.active button {
   font-weight: bold;
 }
@@ -434,6 +459,7 @@ input[type=submit] {
   opacity: 0.4;
   text-shadow: 2px 2px 0.7vw rgba(0,0,0,0.6);
   font-family: 'metalista-web';
+  /* font-family: 'metalista-web'; */
   text-transform: uppercase;
   line-height: 0.8em;
   /* display: inline; */
@@ -903,52 +929,14 @@ background-color: transparent!important;
   }
 
   /*--Menu--*/
-
-  #menu-symb {
-    display: none;
-  }
-
-  .main-menu {
-    display: inline;
-    position: static;
-    float: right;
-    padding: 0;
-    background-color: transparent;
-    width: calc(100% - 165px);
-    margin-top: 16px;
-    height: auto;
-  }
 
   .main-nav {
     height: 82px;
   }
-
-  .main-ul {
-    margin-top: 0;
-    overflow: hidden;
-    float: left;
-    padding: 8px 0;
-  }
-
-  .menu-item {
-    float: left;
-    padding: 0;
-    width: auto;
-    margin: 0 37px 0 0;
-  }
-
-  .menu-item:before {
-    padding-right: 11px;
-  }
-
-  .menu-item.active:before {
-    padding-right: 11px;
-    font-size: 10px;
-  }
-
-  .lang_items {
-    float: right;
-  }
+
+  .menu-item a {
+    font-size: 7rem;
+  }
 
   .lang_items a.active button {
     font-weight: bold;
@@ -1175,29 +1163,10 @@ background-color: transparent!important;
   }
 
   /*--Menu--*/
-
-  .main-menu {
-    background-color: transparent;
-    width: calc(100% - 220px);
+
+  .menu-item a {
+    font-size: 8rem;
   }
-
-  .main-nav {
-    margin: 0 auto;
-    /* width: calc(90% + 48px); */
-  }
-
-  .menu-item {
-    margin-right: 54px;
-    width: auto;
-  }
-
-  .menu-item:before {
-    padding-right: 18px;
-  }
-
-  .menu-item.active:before {
-    padding-right: 18px;
-  }
 
 
   /*--Page standards--*/
@@ -1318,7 +1287,10 @@ background-color: transparent!important;
   /*--Header--*/
 
   /*--Menu--*/
-
+
+  .menu-item a {
+    font-size: 9rem;
+  }
 
   /*--Page: Work--*/
 
@@ -1378,9 +1350,6 @@ background-color: transparent!important;
 
   /*--Menu--*/
 
-  .main-nav {
-    padding: 6px 36px;
-  }
 
 
 /*frontpage--*/
@@ -1489,14 +1458,6 @@ background-color: transparent!important;
   .graphic_elem2{
     background-size: 50%;
     margin: -100px -64px;
-  }
-
-  .main-menu {
-    width: calc(100% - 220px);
-  }
-
-  .menu-item {
-    margin-right: 80px;
   }
 
   #logocontainer {
