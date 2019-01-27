@@ -204,16 +204,8 @@ header {
   width: 100%;
   z-index: 2;
   background-color: rgba(0,0,0,0);
-  transition: background-color 0.3s ease-in-out;
 }
 
-header.open {
-  background-color: rgba(0,0,0,1);
-}
-header.closing {
-  background-color: rgba(0,0,0,0);
-}
-
 #logocontainer {
   width: 20%;
 }
@@ -224,6 +216,7 @@ header.closing {
   top: 18px;
   left: 24px;
   position: absolute;
+  z-index: 1000;
 }
 
 #logo {
@@ -238,24 +231,78 @@ header.closing {
 
 /*--Menu--*/
 
-header.home #menu-symb {
-    background-image: url(../img/hamb_white_1.svg);
-}
-header.home #logo {
+header.home #logo,
+.open #logo {
     background-image: url(../img/eb_logo_white.svg);
 }
+
+/*menu animation by Jose Rosario
+https://codepen.io/JoseRosario/pen/BWqMwK?editors=1111*/
 #menu-symb {
-  color: #000;
   position: absolute;
+  z-index: 1000;
   right: 24px;
   cursor: pointer;
   width: 33px;
   height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   top: 18px;
-  background-image: url(../img/hamb_black_1.svg);
+  transition: transform 0.3s ease-out, height 0.3s ease-in-out;
+  /* background-image: url(../img/hamb_black_1.svg);
   background-size: 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
+
+#menu-symb.change {
+  transform: rotate(-45deg);
+  top: 16px;
+  height: 33px;
+}
+.home #menu-symb span,
+.open #menu-symb span {
+  background-color: #fff;
+}
+
+#menu-symb span {
+  background-color: #000;
+  height: 6px;
+  border-radius: 1px;
+}
+#menu-symb .mid {
+  width: 100%;
+  align-self: center;
+}
+#menu-symb.change .mid {
+    width: 98%;
+}
+#menu-symb .top,
+#menu-symb .bottom {
+  width: 100%;
+}
+#menu-symb.change .top,
+#menu-symb.change .bottom {
+  width: 50%;
+}
+
+#menu-symb .top {
+  transition: width 0.35s ease-out, transform 0.3s cubic-bezier(0.54, -0.81, 0.57, 0.57);
+  transform-origin: right;
+}
+#menu-symb.change .top {
+  transform: rotate(-90deg) translateX(3px);
+}
+
+#menu-symb .bottom {
+  align-self: flex-end;
+  transition: width 0.35s ease-out, transform 0.3s cubic-bezier(0.54, -0.81, 0.57, 0.57);
+  transform-origin: left;
+}
+
+#menu-symb.change .bottom {
+  transform: rotate(-90deg) translateX(-3px);
+}
 
 .main-nav {
   height: 64px;
@@ -265,16 +312,15 @@ header.home #logo {
 
 .main-menu {
   position: fixed;
-  top: 82px;
   background-color: #000;
   width: 100%;
-  height: calc(100vh - 82px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 0;
   box-sizing: border-box;
-  z-index: 1200;
+  z-index: 800;
   max-height: 0;
   visibility: hidden;
   opacity: 0;
@@ -284,7 +330,7 @@ header.home #logo {
   max-height: 100vh;
   visibility: visible;
   opacity: 1;
-  padding: 0 0 16vh 0;
+  padding: 0 0 30vh 0;
 }
 .main-menu.closed {
   max-height: 0;
@@ -310,7 +356,7 @@ header.home #logo {
 
 .menu-item a {
   font-size: 4rem;
-  line-height: 1.2;
+  line-height: 0.8;
   color: #f7f144;
   letter-spacing: 2px;
   /* font-family:   'Source Serif Pro'; */
@@ -433,8 +479,8 @@ input[type=submit] {
   background-image: url(../img/name2_wave2_white.svg);
   /* background-image: url(../img/name2_wave_white.svg); */
   background-repeat: no-repeat;
-  background-size: 75%;
-  background-position: 60%;
+  background-size: 93vh;
+  background-position: 40% 200%;
   background-color: #000;
   overflow: visible;
   margin-bottom: 0;
@@ -448,7 +494,7 @@ input[type=submit] {
 }
 
 #belowfold {
-  background-color: #fff;
+  background-color: #cdc8b5;
   height: 75vh;
   margin-bottom: 0;
 }
@@ -911,7 +957,8 @@ background-color: transparent!important;
 @media (min-width: 640px) {
 
   /*--Header--*/
-
+
+
   #logocontainer {
     width: 165px;
     float: left;
@@ -927,6 +974,22 @@ background-color: transparent!important;
     position: static;
     display: inline;
   }
+
+  #menu-symb {
+    top: 24px;
+    width: 36px;
+    height: 31px;
+  }
+  #menu-symb span {
+    height: 7px;
+  }
+  #menu-symb.change {
+    top: 22px;
+  }
+
+  #menu-symb.change {
+    height: 36px;
+  }
 
   /*--Menu--*/
 
@@ -1161,11 +1224,31 @@ background-color: transparent!important;
     height: 43px;
     margin-top: 20px;
   }
-
+
+  #menu-symb {
+    top: 20px;
+    width: 43px;
+    height: 37px;
+  }
+  #menu-symb span {
+    height: 9px;
+  }
+  #menu-symb.change {
+    top: 18px;
+  }
+
+  #menu-symb.change {
+    height: 43px;
+  }
+
   /*--Menu--*/
+  .main-menu.open {
+    padding: 0 0 17vh 0;
+  }
 
   .menu-item a {
     font-size: 8rem;
+    line-height: 1.2;
   }
 
 
@@ -1182,7 +1265,12 @@ background-color: transparent!important;
   }
 
   /*--Page: frontpage--*/
-
+
+  #frontpage {
+    background-size: 130vh;
+    background-position: 60% 50%;
+  }
+
   #front_background{
     width: 80%;
   }

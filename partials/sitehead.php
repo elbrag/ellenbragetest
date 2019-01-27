@@ -4,7 +4,11 @@
       <div id='logocontainer'>
         <a href="<?php echo home_url();?>"><div id='logo'></div></a>
       </div>
-        <div id='menu-symb' onclick="openMenu(this)" title="Menu"><a href="#" id='menulink'></a></div>
+        <div id='menu-symb' onclick="openMenu(this)" title="Menu">
+          <span class='top'></span>
+          <span class='mid'></span>
+          <span class='bottom'></span>
+        </div>
       </div>
 
       <div class='main-menu'>

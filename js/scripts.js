@@ -137,12 +137,11 @@ function openMenu(x){
   if (menu.hasClass('open')){
     $('.main-ul').removeClass('show');
     menu.addClass('closed');
-    $('header').addClass('closing');
 
     menu.one(transEnd, function() {
         menu.removeClass('open');
   			menu.removeClass('closed');
-        $('header').removeClass('open closing');
+        $('header').removeClass('open');
   			menu.off(transEnd);
   		});
 
