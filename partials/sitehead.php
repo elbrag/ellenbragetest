@@ -2,7 +2,7 @@
     <nav class='main-nav'>
 
       <div id='logocontainer'>
-        <a href="<?php echo home_url();?>"><div id='logo'></div></a>
+        <a href="<?php echo home_url();?>"><div id='logo' class='svg'></div></a>
       </div>
         <div id='menu-symb' onclick="openMenu(this)" title="Menu">
           <span class='top'></span>

@@ -45,13 +45,14 @@ if( have_posts() ) {
 
   <section id='frontpage'>
         <div id='front_background'>
-          <div class='graphic_elem'></div>
+          <div class='name-svg'></div>
+          <!-- <div class='graphic_elem'></div> -->
               <h1 class='name'>Ellen Brage</h1>
           </div>
   </section>
-  <section id='belowfold'>
-
-  </section>
+  <!-- <section id='belowfold'>
+    <h2>Graphic designer & Web developer</h2>
+  </section> -->
   <?php
     }
   }

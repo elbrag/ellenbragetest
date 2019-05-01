@@ -1,3 +1,4 @@
+
 //masonry gallery in single//////////////////////////////////
 jQuery(window).on('load', function() {
     $('#singleimages').masonry({
@@ -27,6 +28,8 @@ $(document).click(function(){
 var topButton = $("#topButton");
 
     $(document).ready(function() {
+      console.log('hi');
+
     var offset = 250;
     var duration = 300;
 
@@ -52,8 +55,41 @@ return false;
 });
 /////////////////////////////////////////////////////////////////////////
 
-
  $(document).ready(function(){
+console.log('hack');
+   /*
+  * Replace all SVG images with inline SVG
+  */
+     $('.svg').each(function(){
+         var $img = jQuery(this);
+         var imgID = $img.attr('id');
+         var imgClass = $img.attr('class');
+         var imgURL = $img.css('background-image');
+         imgURL = imgURL.replace('url(','').replace(')','').replace(/\"/gi, "");
+         console.log(imgURL);
+
+         jQuery.get(imgURL, function(data) {
+             // Get the SVG tag, ignore the rest
+             var $svg = jQuery(data).find('svg');
+
+             // Add replaced image's ID to the new SVG
+             if(typeof imgID !== 'undefined') {
+                 $svg = $svg.attr('id', imgID);
+             }
+             // Add replaced image's classes to the new SVG
+             if(typeof imgClass !== 'undefined') {
+                 $svg = $svg.attr('class', imgClass+' replaced-svg');
+             }
+
+             // Remove any invalid XML tags as per http://validator.w3.org
+             $svg = $svg.removeAttr('xmlns:a');
+
+             // Replace image with new SVG
+             $img.replaceWith($svg);
+
+         }, 'xml');
+
+     });
 
 
       function windowSize() {
@@ -157,54 +193,5 @@ function openMenu(x){
 
 };
 
-/*theme slider*//////////////////////////////////////////////////
-
-
-var cur_theme = document.getElementById('cur_theme');
-var prev_theme = document.getElementById('prev_theme');
-var next_theme = document.getElementById('next_theme');
-var loader = document.getElementById('loading');
-
-
-function slidenext(){
-  loader.style.display = 'flex';
-
-  var pos = 0;
-  var pos2 = -700;
-  var id = setInterval(frame, 0);
-  function frame() {
-    if (pos == 1000) {
-      clearInterval(id);
-    } else {
-      pos+=10;
-      pos2+=10;
-      cur_theme.style.right = pos + 'px';
-      next_theme.style.opacity = '1';
-      if (pos2 < 0) {
-        next_theme.style.right = (pos2+10) + 'px';
-      }
-    }
-  }
-}
-function slideprev(){
-
-  loader.style.display = 'flex';
-
-  var pos = 0;
-  var pos2 = -700;
-  var id = setInterval(frame, 0);
-  function frame() {
-    if (pos == 1000) {
-      clearInterval(id);
-    } else {
-      pos+=10;
-      pos2+=10;
-      cur_theme.style.left = pos + 'px';
-      prev_theme.style.opacity = '1';
-      if (pos2 < 0) {
-        prev_theme.style.left = (pos2+10) + 'px';
-      }
-    }
-  }
-}
+
 

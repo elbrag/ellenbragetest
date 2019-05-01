@@ -3,7 +3,7 @@
   font-size: 62.5%;
 }
 * {
-  font-family: 'ff-tisa-sans-web-pro', 'Trebuchet MS', sans-serif;
+  font-family: 'ivyjournal', 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -244,12 +244,12 @@ https://codepen.io/JoseRosario/pen/BWqMwK?editors=1111*/
   right: 24px;
   cursor: pointer;
   width: 33px;
-  height: 28px;
+  height: 27.5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   top: 18px;
-  transition: transform 0.3s ease-out, height 0.3s ease-in-out;
+  transition: transform 0.2s ease-out, height 0.2s ease-in-out;
   /* background-image: url(../img/hamb_black_1.svg);
   background-size: 100%;
   background-repeat: no-repeat; */
@@ -287,7 +287,7 @@ https://codepen.io/JoseRosario/pen/BWqMwK?editors=1111*/
 }
 
 #menu-symb .top {
-  transition: width 0.35s ease-out, transform 0.3s cubic-bezier(0.54, -0.81, 0.57, 0.57);
+  transition: width 0.25s ease-out, transform 0.2s cubic-bezier(0.54, -0.81, 0.57, 0.57);
   transform-origin: right;
 }
 #menu-symb.change .top {
@@ -296,7 +296,7 @@ https://codepen.io/JoseRosario/pen/BWqMwK?editors=1111*/
 
 #menu-symb .bottom {
   align-self: flex-end;
-  transition: width 0.35s ease-out, transform 0.3s cubic-bezier(0.54, -0.81, 0.57, 0.57);
+  transition: width 0.25s ease-out, transform 0.2s cubic-bezier(0.54, -0.81, 0.57, 0.57);
   transform-origin: left;
 }
 
@@ -476,27 +476,114 @@ input[type=submit] {
 
 
 #frontpage {
-  background-image: url(../img/name2_wave2_white.svg);
-  /* background-image: url(../img/name2_wave_white.svg); */
-  background-repeat: no-repeat;
-  background-size: 93vh;
-  background-position: 40% 200%;
   background-color: #000;
-  overflow: visible;
+  overflow: hidden;
   margin-bottom: 0;
 }
+.name-svg {
+  position: absolute;
+  left: -80%;
+  top: -50%;
+  width: 220%;
+  height: 220%;
+  background-image: url(../img/name2_wave2_white.svg);
+  /* background-image: url(../img/name2_wave_white.svg); */
+  background-repeat: repeat;
+  /* background-repeat-x: no-repeat; */
+  background-size: 60%;
+  -webkit-animation-name: jello;
+  animation: wiggle 40s linear infinite;
+  animation-direction: alternate;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  will-change: transform, background-position;
+}
+@keyframes jello {
+  from,
+  11.1%,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+
+  77.7% {
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+
+  88.8% {
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+
+.svg path {
+    fill: red;
+}
+
+@keyframes wiggle {
+            0% { transform: skewX(15deg);
+;
+                 background-position: 100% 200%;}
+            /* 10% { transform: skewX(-8deg); }
+            20% { transform: skewX(7deg); }
+            30% { transform: skewX(-6deg); }
+            40% { transform: skewX(5deg); } */
+            50% {  transform: skewX(-50deg);
+                   background-position: 250% 50%;
+                   }
+            /* 60% { transform: skewX(3deg); }
+            70% { transform: skewX(-2deg); }
+            80% { transform: skewX(1deg); }
+            90% { transform: skewX(0deg); } */
+            100% { transform: skewX(30deg);
+                   background-position: 400% 0%;}
+         }
+
 
 #front_background {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   position: relative;
 }
 
 #belowfold {
-  background-color: #cdc8b5;
+  background-color: #fff;
   height: 75vh;
-  margin-bottom: 0;
+  margin: 15px;
+  border: 0.5px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#belowfold h2 {
+  text-align: center;
 }
 .name {
   display: none;
@@ -1215,30 +1302,20 @@ background-color: transparent!important;
   /*--Header--*/
 
   #logocontainer {
-    width: 220px;
   }
 
 
   #logocontainer a {
-    width: 120px;
-    height: 43px;
-    margin-top: 20px;
   }
 
   #menu-symb {
-    top: 20px;
-    width: 43px;
-    height: 37px;
   }
   #menu-symb span {
-    height: 9px;
   }
   #menu-symb.change {
-    top: 18px;
   }
 
   #menu-symb.change {
-    height: 43px;
   }
 
   /*--Menu--*/
